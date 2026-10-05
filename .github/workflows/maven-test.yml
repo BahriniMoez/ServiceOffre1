@@ -1,10 +1,10 @@
-name: Java CI with Maven
+name: Build and Test Spring Boot
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main ] # ou master selon votre branche
   pull_request:
-    branches: [ "main" ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -21,5 +21,8 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Run tests with Maven
-        run: mvn test --no-transfer-progress
+      - name: Build with Maven
+        run: mvn clean package
+
+      - name: Run Tests
+        run: mvn test
