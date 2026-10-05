@@ -7,5 +7,6 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:17-jre
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
-EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENV JAVA_TOOL_OPTIONS="-Xmx300m -Dfile.encoding=UTF-8"
+# Render fournit le port dans la variable PORT (application.properties reste vide)
+ENTRYPOINT ["sh", "-c", "java -jar app.jar --server.port=${PORT:-8080}"]
