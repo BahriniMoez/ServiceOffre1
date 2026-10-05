@@ -7,15 +7,24 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Offre {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long code;
-    private String intitulé;   // je te conseille intitule, specialite, societe (sans accents)
-    private String specialité;
-    private String société;
+    private String intitule;
+    private String specialite;
+    private String societe;
     private int nbpostes;
     private String pays;
 
     public Offre() {}
+
+    public Offre(String intitule, String specialite, String societe, int nbpostes, String pays) {
+        this.intitule = intitule;
+        this.specialite = specialite;
+        this.societe = societe;
+        this.nbpostes = nbpostes;
+        this.pays = pays;
+    }
 
     public long getCode() {
         return code;
@@ -25,28 +34,28 @@ public class Offre {
         this.code = code;
     }
 
-    public String getIntitulé() {
-        return intitulé;
+    public String getIntitule() {
+        return intitule;
     }
 
-    public void setIntitulé(String intitulé) {
-        this.intitulé = intitulé;
+    public void setIntitule(String intitule) {
+        this.intitule = intitule;
     }
 
-    public String getSociété() {
-        return société;
+    public String getSpecialite() {
+        return specialite;
     }
 
-    public void setSociété(String société) {
-        this.société = société;
+    public void setSpecialite(String specialite) {
+        this.specialite = specialite;
     }
 
-    public String getSpecialité() {
-        return specialité;
+    public String getSociete() {
+        return societe;
     }
 
-    public void setSpecialité(String specialité) {
-        this.specialité = specialité;
+    public void setSociete(String societe) {
+        this.societe = societe;
     }
 
     public int getNbpostes() {
@@ -62,14 +71,6 @@ public class Offre {
     }
 
     public void setPays(String pays) {
-        this.pays = pays;
-    }
-
-    public Offre(String intitulé, String specialité, String société, int nbpostes, String pays) {
-        this.intitulé = intitulé;
-        this.specialité = specialité;
-        this.société = société;
-        this.nbpostes = nbpostes;
         this.pays = pays;
     }
 }
